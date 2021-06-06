@@ -105,8 +105,57 @@ Vector Matrix::operator*(Vector vec)
     return res;
 }
 
+void Vector::Input()
+{
+    int n;
+    n = this->getn();
+    if (n == 0)
+    {
+        this->Order::Input();
+        n = this->getn();
+    }
+    for (int i = 0; i < n; ++i)
+    {
+        cout << "v[" << i << "] = ";
+        cin >> v[i];
+    }
+}
+
+void Vector::Output()
+{
+    int n;
+    n = this->getn();
+    if (n)
+    {
+        for (int i = 0; i < n; ++i)
+        {
+            cout << v[i] << " ";
+        }
+        cout << endl;
+    }
+}
+
 int main()
 {
+    Matrix mat;
+    Vector v1, v2;
+
+    cout << "Input the matrix:" << endl;
+    mat.Input();
+
+    cout << "Input Vector 1:" << endl;
+    v1.Input();
+
+    v2 = mat * v1;
+
+    cout << "The matrix:" << endl;
+    mat.Output();
+
+    cout << "Vector 1:" << endl;
+    v1.Output();
+
+    cout << "Vector 2 = Matrix * Vector 1" << endl;
+    v2.Output();
 
     return 0;
 }
