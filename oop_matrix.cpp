@@ -34,7 +34,7 @@ private:
 public:
     void Input();
     void Output();
-    Vector operator*(Vector v); // multiplying method
+    Vector operator*(Vector vec); // multiplying method
 };
 
 class Vector : public Order
@@ -86,6 +86,24 @@ void Matrix::Output()
     }
 }
 
+Vector Matrix::operator*(Vector vec)
+{
+    Vector res;
+    int n;
+    n = this->getn();
+
+    for (int r = 0; r < n; ++r)
+    {
+        res.v[r] = 0;
+
+        for (int c = 0; c < n; ++c)
+        {
+            res.v[r] += m[r][c] * vec.v[c];
+        }
+    }
+
+    return res;
+}
 
 int main()
 {
